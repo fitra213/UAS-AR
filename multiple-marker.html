@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <!-- Correcting zooming issue -->
+    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+    <!-- Library untuk VR membangun 3D -->
+    <script src="./js/aframe/aframe.min.js"></script>
+    <!-- Library untuk AR yang melakukan pengenalan marker dan menyematkan kamera-->
+    <script src="./js/arjs/aframe-ar.js"></script>
+    <title>AR MULTIPLE MARKER</title>
+    <!-- include text geometry -->
+    <script src="https://unpkg.com/aframe-text-geometry-component@0.5.1/dist/aframe-text-geometry-component.min.js"></script>
+  </head>
+
+  <body style="margin: 0px; overflow: hidden">
+    <a-scene embedded vr-mode-ui="enabled: false" arjs="detectionMode: mono_and_matrix; matrixCodeType: 3x3; debugUIEnabled: false;">
+      <!-- create assets -->
+      <a-assets>
+        <a-asset-item id="botol" src="./assets/botol/scene.gltf"></a-asset-item>
+        <a-asset-item id="cyber" src="./assets/cyber/scene.gltf"></a-asset-item>
+        <a-asset-item id="fcar" src="./assets/fcar/scene.gltf"></a-asset-item>
+        <a-asset-item id="fcar2" src="./assets/fcar2/scene.gltf"></a-asset-item>
+        <a-asset-item id="future" src="./assets/future/scene.gltf"></a-asset-item>
+        <a-asset-item id="old" src="./assets/old/scene.gltf"></a-asset-item>
+        <a-asset-item id="trash" src="./assets/trash/scene.gltf"></a-asset-item>
+        <a-asset-item id="truck" src="./assets/truck/scene.gltf"></a-asset-item>
+        <a-asset-item id="vintage" src="./assets/vintage/scene.gltf"></a-asset-item>
+        <a-asset-item id="zis" src="./assets/zis/scene.gltf"></a-asset-item>
+    </a-assets>
+
+      <!-- handle unknown marker -->
+      <a-marker type="unknown">
+        <a-box depth="1" height="1" width="1" position="0 0.5 0" material="opacity: 0.5; side:double; color:purple;"></a-box>
+      </a-marker>
+
+      <!-- handle hiro marker -->
+      <a-marker preset="hiro">
+        <a-entity gltf-model="#botol" rotation="-90 0 0" scale="0.5 0.5 0.5" animation-mixer></a-entity>
+      </a-marker>
+
+      <!-- handle kanji marker -->
+      <a-marker preset="kanji">
+        <a-entity gltf-model="#cyber" rotation="90 180 0" scale="0.5 0.5 0.5"></a-entity>
+      </a-marker>
+
+      <!-- handle matrix marker -->
+      <a-marker type="barcode" value="0">
+        <a-gltf-model src="#fcar" rotation="-90 90 0" scale="0.5 0.5 0.5"></a-gltf-model>
+      </a-marker>
+
+      <a-marker type="barcode" value="1">
+        <a-gltf-model src="#fcar2" rotation="90 90 0" scale="0.5 0.5 0.5"></a-gltf-model>
+      </a-marker>
+
+      <a-marker type="barcode" value="2">
+        <a-gltf-model src="#old" rotation="180 90 0" scale="0.5 0.5 0.5"></a-gltf-model>
+      </a-marker>
+
+      <a-marker type="barcode" value="3">
+        <a-gltf-model src="#trash" rotation="0 0 0" scale="0.5 0.5 0.5"></a-gltf-model>
+      </a-marker>
+
+      <a-marker type="barcode" value="4">
+        <a-gltf-model src="#truck" rotation="0 0 0" scale="0.5 0.5 0.5"></a-gltf-model>
+      </a-marker>
+
+      <a-marker type="barcode" value="5">
+        <a-gltf-model src="#vintage" rotation="0 0 0" scale="0.5 0.5 0.5"></a-gltf-model>
+      </a-marker>
+
+      <a-marker type="barcode" value="6">
+        <a-gltf-model src="#zis" rotation="90 90 0" scale="0.5 0.5 0.5"></a-gltf-model>
+      </a-marker>
+
+      <a-marker type="barcode" value="7">
+        <a-gltf-model src="#peugeot" rotation="0 0 0" scale="0.5 0.5 0.5"></a-gltf-model>
+      </a-marker>
+
+      <a-marker type="barcode" value="8">
+        <a-gltf-model src="#audi" rotation="90 180 0" scale="0.5 0.5 0.5"></a-gltf-model>
+      </a-marker>
+
+      <a-marker type="barcode" value="9">
+        <a-gltf-model src="#lamborghini" rotation="-90 0 0" scale="0.5 0.5 0.5"></a-gltf-model>
+      </a-marker>
+
+      <!-- handle custom marker -->
+      <a-marker preset="custom" type="pattern" url="./assets/Marker/vansy_logo.patt">
+        <a-image src="#nochd" rotation="-90 0 0" position="0 0 0"></a-image>
+      </a-marker>
+
+      <!-- add a simple camera -->
+      <a-entity camera>
+        <a-cursor></a-cursor>
+      </a-entity>
+    </a-scene>
+  </body>
+</html>
